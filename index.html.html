@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nakshatra Medicos - Ramnagar</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--green:#2e7d32;--blue:#1565c0;--bg:#f0f7f0;--shadow:0 4px 16px rgba(0,0,0,0.09);}
+body{font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:#222;}
+nav{background:linear-gradient(135deg,var(--green),var(--blue));padding:12px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(0,0,0,0.25);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:10px;}
+.nav-brand{display:flex;align-items:center;gap:12px;}
+.nav-logo{width:48px;height:48px;border-radius:50%;background:#fff;padding:3px;box-shadow:0 0 8px rgba(255,255,255,0.4);}
+.nav-title{color:#fff;font-weight:700;font-size:1.15rem;letter-spacing:1px;}
+.nav-sub{color:rgba(255,255,255,0.82);font-size:0.7rem;}
+.nav-links{display:flex;gap:8px;flex-wrap:wrap;}
+.nav-links button{color:#fff;background:transparent;border:1px solid rgba(255,255,255,0.35);border-radius:20px;padding:6px 14px;cursor:pointer;font-size:0.88rem;font-family:inherit;transition:0.2s;}
+.nav-links button.active,.nav-links button:hover{background:rgba(255,255,255,0.22);}
+.page{display:none;}.page.active{display:block;}
+.hero{background:linear-gradient(135deg,#1b5e20,#0d47a1);padding:60px 24px;text-align:center;color:#fff;}
+.hero-logo{width:120px;height:120px;border-radius:50%;background:#fff;padding:8px;margin:0 auto 20px;box-shadow:0 0 30px rgba(255,255,255,0.3);display:block;}
+.hero h2{font-size:2rem;margin-bottom:8px;}
+.hero .sub{opacity:0.9;margin-bottom:4px;}
+.hero .tagline{font-style:italic;opacity:0.8;margin-top:8px;}
+.open-badge{display:inline-block;margin-top:18px;background:#4caf50;color:#fff;padding:9px 24px;border-radius:20px;font-weight:600;}
+.section{padding:40px 24px;}
+.sec-title{text-align:center;color:var(--green);font-size:1.4rem;margin-bottom:24px;}
+.sec-line{width:60px;height:3px;background:var(--green);margin:8px auto 0;border-radius:2px;}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:20px;}
+.card{background:#fff;border-radius:14px;padding:22px 16px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--green);transition:transform 0.2s;}
+.card:hover{transform:translateY(-4px);}
+.card .icon{font-size:2.2rem;margin-bottom:8px;}
+.card h3{color:var(--green);font-size:0.95rem;margin-bottom:4px;}
+.card p{color:#555;font-size:0.82rem;}
+.card.blue{border-top-color:var(--blue);}
+.card.blue h3{color:var(--blue);}
+.search-wrap{max-width:480px;margin:0 auto 24px;position:relative;}
+.search-wrap input{width:100%;padding:13px 46px;border:2px solid #c8e6c9;border-radius:30px;font-size:0.95rem;font-family:inherit;outline:none;box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+.search-wrap input:focus{border-color:var(--green);}
+.search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:1.2rem;}
+.search-clear{position:absolute;right:16px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:1.1rem;color:#999;display:none;}
+.search-count{text-align:center;color:#666;font-size:0.88rem;margin-bottom:14px;}
+.med-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.med-table th{background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;padding:12px 16px;text-align:left;font-weight:600;}
+.med-table td{padding:11px 16px;border-bottom:1px solid #e8f5e9;}
+.med-table tr:hover td{background:#f1f8e9;}
+.badge{display:inline-block;padding:3px 12px;border-radius:12px;font-size:0.8rem;font-weight:600;}
+.in-stock{background:#e8f5e9;color:#2e7d32;}
+.out-stock{background:#ffebee;color:#c62828;}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;}
+.contact-card{background:#fff;border-radius:14px;padding:28px 20px;text-align:center;box-shadow:var(--shadow);border-left:5px solid var(--green);}
+.contact-card .icon{font-size:2rem;margin-bottom:10px;}
+.contact-card h3{color:var(--green);margin-bottom:8px;}
+.contact-card a{color:var(--blue);font-weight:700;text-decoration:none;}
+.map-btn{display:inline-block;margin-top:10px;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;padding:7px 18px;border-radius:20px;font-size:0.85rem;font-weight:600;text-decoration:none;}
+.admin-login-box{max-width:380px;margin:60px auto;background:#fff;border-radius:16px;padding:40px 32px;box-shadow:0 4px 24px rgba(0,0,0,0.12);text-align:center;}
+.admin-login-box h2{color:var(--green);margin-bottom:6px;}
+.inp{width:100%;padding:12px 14px;border:2px solid #c8e6c9;border-radius:8px;font-size:1rem;font-family:inherit;outline:none;margin:8px 0;}
+.inp:focus{border-color:var(--green);}
+.btn{display:inline-block;padding:10px 24px;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff;border:none;border-radius:24px;font-size:0.95rem;cursor:pointer;font-weight:600;font-family:inherit;transition:0.2s;}
+.btn:hover{opacity:0.9;transform:translateY(-1px);}
+.btn-blue{background:linear-gradient(135deg,#1565c0,#0d47a1);}
+.btn-red{background:linear-gradient(135deg,#c62828,#b71c1c);}
+.btn-orange{background:linear-gradient(135deg,#f57f17,#e65100);}
+.btn-sm{padding:6px 14px;font-size:0.82rem;}
+.error{color:#c62828;font-size:0.88rem;margin-top:6px;}
+.success{color:var(--green);font-size:0.88rem;font-weight:600;}
+.admin-dash{padding:30px 24px;}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;margin-bottom:24px;}
+.stat{background:#fff;border-radius:12px;padding:20px 16px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--green);}
+.stat h3{font-size:1.8rem;font-weight:700;color:var(--green);}
+.stat p{font-size:0.82rem;color:#666;margin-top:4px;}
+.admin-sec{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);margin-bottom:24px;}
+.admin-sec h3{color:var(--green);margin-bottom:16px;border-bottom:2px solid #e8f5e9;padding-bottom:8px;}
+.form-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+.form-row input,.form-row select{flex:1;min-width:120px;padding:9px 12px;border:2px solid #c8e6c9;border-radius:8px;font-size:0.9rem;font-family:inherit;outline:none;}
+.form-row input:focus,.form-row select:focus{border-color:var(--green);}
+.admin-table{width:100%;border-collapse:collapse;}
+.admin-table th{background:#e8f5e9;color:var(--green);padding:10px 12px;text-align:left;font-size:0.88rem;}
+.admin-table td{padding:8px 10px;border-bottom:1px solid #f1f8e9;}
+.admin-table input,.admin-table select{padding:5px 8px;border:1px solid #c8e6c9;border-radius:6px;font-size:0.87rem;font-family:inherit;outline:none;}
+.admin-table input:focus,.admin-table select:focus{border-color:var(--green);}
+.pwd-panel{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);margin-bottom:24px;border:2px solid #bbdefb;}
+.pwd-panel h3{color:var(--blue);margin-bottom:16px;border-bottom:2px solid #e3f2fd;padding-bottom:8px;}
+.pwd-panel label{font-size:0.85rem;color:#555;display:block;margin-bottom:4px;}
+.pwd-panel .inp{margin:0 0 12px;}
+.no-result{text-align:center;padding:30px;color:#999;font-size:0.95rem;}
+footer{background:linear-gradient(135deg,#1b5e20,#0d47a1);color:#fff;text-align:center;padding:24px 16px;margin-top:30px;}
+footer p{opacity:0.85;margin-top:4px;font-size:0.9rem;}
+@media(max-width:600px){.nav-links button{font-size:0.78rem;padding:5px 10px;}.hero h2{font-size:1.5rem;}.admin-login-box{margin:30px 16px;padding:28px 20px;}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="white"/>
+      <ellipse cx="50" cy="22" rx="7" ry="16" fill="#3a8c2f"/>
+      <ellipse cx="35" cy="28" rx="5" ry="13" fill="#4caf50" transform="rotate(-30,35,28)"/>
+      <ellipse cx="65" cy="28" rx="5" ry="13" fill="#4caf50" transform="rotate(30,65,28)"/>
+      <ellipse cx="24" cy="38" rx="4" ry="10" fill="#66bb6a" transform="rotate(-50,24,38)"/>
+      <ellipse cx="76" cy="38" rx="4" ry="10" fill="#66bb6a" transform="rotate(50,76,38)"/>
+      <rect x="12" y="48" width="34" height="18" rx="9" fill="#1565c0"/>
+      <rect x="12" y="48" width="17" height="18" rx="9" fill="#1e88e5"/>
+      <rect x="54" y="48" width="34" height="18" rx="9" fill="#2e7d32"/>
+      <rect x="71" y="48" width="17" height="18" rx="9" fill="#4caf50"/>
+      <circle cx="44" cy="70" r="2.5" fill="#4caf50"/>
+      <circle cx="50" cy="73" r="2" fill="#4caf50"/>
+      <circle cx="56" cy="70" r="2.5" fill="#4caf50"/>
+      <circle cx="47" cy="79" r="1.5" fill="#81c784"/>
+      <circle cx="53" cy="79" r="1.5" fill="#81c784"/>
+      <circle cx="50" cy="85" r="1.2" fill="#a5d6a7"/>
+    </svg>
+    <div>
+      <div class="nav-title">Nakshatra Medicos</div>
+      <div class="nav-sub">Tanda Chauraha, Ramnagar – 244715</div>
+    </div>
+  </div>
+  <div class="nav-links">
+    <button class="active" onclick="showPage('home',this)">🏠 Home</button>
+    <button onclick="showPage('medicines',this)">💊 Medicines</button>
+    <button onclick="showPage('contact',this)">📞 Contact</button>
+    <button onclick="showPage('admin',this)">🔐 Admin</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="white"/>
+      <ellipse cx="50" cy="22" rx="7" ry="16" fill="#3a8c2f"/>
+      <ellipse cx="35" cy="28" rx="5" ry="13" fill="#4caf50" transform="rotate(-30,35,28)"/>
+      <ellipse cx="65" cy="28" rx="5" ry="13" fill="#4caf50" transform="rotate(30,65,28)"/>
+      <ellipse cx="24" cy="38" rx="4" ry="10" fill="#66bb6a" transform="rotate(-50,24,38)"/>
+      <ellipse cx="76" cy="38" rx="4" ry="10" fill="#66bb6a" transform="rotate(50,76,38)"/>
+      <rect x="12" y="48" width="34" height="18" rx="9" fill="#1565c0"/>
+      <rect x="12" y="48" width="17" height="18" rx="9" fill="#1e88e5"/>
+      <rect x="54" y="48" width="34" height="18" rx="9" fill="#2e7d32"/>
+      <rect x="71" y="48" width="17" height="18" rx="9" fill="#4caf50"/>
+      <circle cx="44" cy="70" r="2.5" fill="#4caf50"/>
+      <circle cx="50" cy="73" r="2" fill="#4caf50"/>
+      <circle cx="56" cy="70" r="2.5" fill="#4caf50"/>
+      <circle cx="47" cy="79" r="1.5" fill="#81c784"/>
+      <circle cx="53" cy="79" r="1.5" fill="#81c784"/>
+      <circle cx="50" cy="85" r="1.2" fill="#a5d6a7"/>
+    </svg>
+    <h2>Nakshatra Medicos</h2>
+    <p class="sub">📍 Tanda Chauraha, Ramnagar – 244715, Nainital, Uttarakhand</p>
+    <p class="tagline">"Aapki Sehat, Hamari Zimmedari"</p>
+    <div class="open-badge">⏰ Open: 8:00 AM – 10:00 PM</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">Hamari Sevayein<div class="sec-line"></div></div>
+    <div class="cards">
+      <div class="card"><div class="icon">💊</div><h3>All Medicines</h3><p>Generic & branded available</p></div>
+      <div class="card"><div class="icon">🩺</div><h3>Consultation</h3><p>Expert prescription guidance</p></div>
+      <div class="card"><div class="icon">🏥</div><h3>Healthcare Products</h3><p>BP monitors, glucometers & more</p></div>
+      <div class="card"><div class="icon">💉</div><h3>Injections</h3><p>Available on prescription</p></div>
+      <div class="card"><div class="icon">🌿</div><h3>Ayurvedic</h3><p>Herbal & natural products</p></div>
+      <div class="card"><div class="icon">🧴</div><h3>Cosmetics & Care</h3><p>Skincare, baby care & hygiene</p></div>
+    </div>
+  </div>
+
+  <div class="section" style="background:#e8f5e9;border-radius:16px;margin:0 16px 24px;">
+    <div class="sec-title">Kyun Chunein Hume?<div class="sec-line"></div></div>
+    <div class="cards">
+      <div class="card blue"><div class="icon">✅</div><h3>Licensed Store</h3><p>Fully certified pharmacy</p></div>
+      <div class="card blue"><div class="icon">⚡</div><h3>Fast Service</h3><p>Quick & hassle-free</p></div>
+      <div class="card blue"><div class="icon">💰</div><h3>Best Prices</h3><p>Competitive prices</p></div>
+      <div class="card blue"><div class="icon">🤝</div><h3>Trusted</h3><p>Serving with care</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDICINES -->
+<div id="page-medicines" class="page">
+  <div class="section">
+    <div class="sec-title">Available Medicines<div class="sec-line"></div></div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Dawai ka naam ya category search karein..." oninput="filterMeds()" />
+      <span class="search-clear" id="searchClear" onclick="clearSearch()">✕</span>
+    </div>
+    <p class="search-count" id="searchCount"></p>
+    <div style="overflow-x:auto;">
+      <table class="med-table">
+        <thead><tr><th>Medicine Name</th><th>Category</th><th>Price (₹)</th><th>Status</th></tr></thead>
+        <tbody id="publicMedBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="section">
+    <div class="sec-title">Hamare Saath Sampark Karein<div class="sec-line"></div></div>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="icon">📍</div><h3>Address</h3><p>Tanda Chauraha<br>Ramnagar – 244715<br>Nainital, Uttarakhand</p></div>
+      <div class="contact-card"><div class="icon">📞</div><h3>Phone</h3><p><a href="tel:9012969135" style="font-size:1.1rem;">9012969135</a><br><span style="color:#666;font-size:0.85rem;">Call ya WhatsApp karein</span></p></div>
+      <div class="contact-card"><div class="icon">⏰</div><h3>Opening Hours</h3><p><b>Subah:</b> 8:00 AM<br><b>Raat:</b> 10:00 PM<br><span style="color:#2e7d32;font-size:0.85rem;">Hafte ke saatron din</span></p></div>
+      <div class="contact-card"><div class="icon">🗺️</div><h3>Location</h3><p>Ramnagar ke Tanda Chauraha par, Nainital district</p><a class="map-btn" href="https://maps.google.com/?q=Tanda+Chauraha+Ramnagar+Uttarakhand" target="_blank">🗺️ Map Dekhein</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="page-admin" class="page">
+  <!-- LOGIN -->
+  <div id="adminLogin">
+    <div class="admin-login-box">
+      <div style="font-size:3rem;margin-bottom:10px;">🔐</div>
+      <h2>Admin Login</h2>
+      <p style="color:#666;font-size:0.9rem;margin-bottom:18px;">Nakshatra Medicos Admin Panel</p>
+      <input class="inp" type="password" id="adminPassInput" placeholder="Password daalen..." onkeydown="if(event.key==='Enter')doLogin()">
+      <div class="error" id="loginError"></div>
+      <br><button class="btn" style="width:100%;margin-top:10px;" onclick="doLogin()">Login Karein</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="adminDash" style="display:none;">
+    <div class="admin-dash">
+      <div class="dash-header">
+        <h2 style="color:#2e7d32;">🏥 Admin Dashboard</h2>
+        <div style="display:flex;gap:10px;">
+          <button class="btn btn-blue btn-sm" onclick="togglePwd()">🔑 Password Change</button>
+          <button class="btn btn-red btn-sm" onclick="doLogout()">Logout</button>
+        </div>
+      </div>
+
+      <!-- Change Password -->
+      <div class="pwd-panel" id="pwdPanel" style="display:none;">
+        <h3>🔑 Password Change Karein</h3>
+        <div style="max-width:380px;">
+          <label>Purana Password</label>
+          <input class="inp" type="password" id="cpOld" placeholder="Purana password">
+          <label>Naya Password</label>
+          <input class="inp" type="password" id="cpNew" placeholder="Naya password">
+          <label>Naya Password Confirm</label>
+          <input class="inp" type="password" id="cpConfirm" placeholder="Confirm naya password">
+          <div class="error" id="cpError"></div>
+          <div class="success" id="cpSuccess"></div>
+          <br><button class="btn" style="margin-top:8px;" onclick="changePassword()">Password Change Karein</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats" id="statsDiv"></div>
+
+      <!-- Add Medicine -->
+      <div class="admin-sec">
+        <h3>➕ Nayi Medicine Add Karein</h3>
+        <div class="form-row">
+          <input type="text" id="newName" placeholder="Medicine ka naam">
+          <input type="text" id="newCat" placeholder="Category">
+          <input type="number" id="newPrice" placeholder="Price (₹)" style="max-width:110px;">
+          <select id="newStatus">
+            <option value="in-stock">✅ In Stock</option>
+            <option value="out-stock">❌ Out of Stock</option>
+          </select>
+        </div>
+        <button class="btn btn-sm" onclick="addMed()">Add Medicine</button>
+      </div>
+
+      <!-- Edit Table -->
+      <div class="admin-sec" style="overflow-x:auto;">
+        <h3>📋 Medicines List – Edit / Delete</h3>
+        <table class="admin-table">
+          <thead><tr><th>Name</th><th>Category</th><th>Price (₹)</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody id="adminMedBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p style="font-weight:700;font-size:1rem;opacity:1;">🏥 Nakshatra Medicos</p>
+  <p>📍 Tanda Chauraha, Ramnagar – 244715, Nainital, Uttarakhand</p>
+  <p>📞 9012969135 &nbsp;|&nbsp; ⏰ 8:00 AM – 10:00 PM</p>
+  <p style="opacity:0.5;font-size:0.78rem;margin-top:8px;">© 2025 Nakshatra Medicos. All rights reserved.</p>
+</footer>
+
+<script>
+let adminPassword = "Nakshatra 123";
+let medicines = [
+  {id:1,name:"Paracetamol 500mg",category:"Analgesic",price:25,status:"in-stock"},
+  {id:2,name:"Amoxicillin 250mg",category:"Antibiotic",price:85,status:"in-stock"},
+  {id:3,name:"Omeprazole 20mg",category:"Antacid",price:60,status:"in-stock"},
+  {id:4,name:"Cetirizine 10mg",category:"Antiallergic",price:30,status:"in-stock"},
+  {id:5,name:"Metformin 500mg",category:"Diabetes",price:55,status:"in-stock"},
+  {id:6,name:"Amlodipine 5mg",category:"BP",price:72,status:"out-stock"},
+  {id:7,name:"Dolo 650",category:"Analgesic",price:38,status:"in-stock"},
+  {id:8,name:"Azithromycin 500mg",category:"Antibiotic",price:120,status:"in-stock"},
+];
+let nid = 9;
+
+function showPage(p, el) {
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  if(el) el.classList.add('active');
+  if(p==='medicines') renderPublic();
+  window.scrollTo(0,0);
+}
+
+function renderPublic() {
+  const q = (document.getElementById('searchInput')||{}).value||'';
+  const filtered = medicines.filter(m=>
+    m.name.toLowerCase().includes(q.toLowerCase()) ||
+    m.category.toLowerCase().includes(q.toLowerCase())
+  );
+  const tbody = document.getElementById('publicMedBody');
+  if(filtered.length===0){
+    tbody.innerHTML=`<tr><td colspan="4" class="no-result">😔 Koi dawai nahi mili — "<b>${q}</b>" ke liye</td></tr>`;
+  } else {
+    tbody.innerHTML = filtered.map(m=>`
+      <tr>
+        <td><b>${m.name}</b></td>
+        <td>${m.category}</td>
+        <td style="color:#2e7d32;font-weight:700;">₹${m.price}</td>
+        <td><span class="badge ${m.status==='in-stock'?'in-stock':'out-stock'}">${m.status==='in-stock'?'✅ In Stock':'❌ Out of Stock'}</span></td>
+      </tr>`).join('');
+  }
+  const countEl = document.getElementById('searchCount');
+  if(q) {
+    countEl.innerHTML = `🔎 "<b>${q}</b>" ke liye ${filtered.length} result mile`;
+    document.getElementById('searchClear').style.display='block';
+  } else {
+    countEl.innerHTML='';
+    document.getElementById('searchClear').style.display='none';
+  }
+}
+
+function filterMeds(){ renderPublic(); }
+function clearSearch(){ document.getElementById('searchInput').value=''; renderPublic(); }
+
+// ADMIN
+function doLogin(){
+  const v = document.getElementById('adminPassInput').value;
+  if(v===adminPassword){
+    document.getElementById('adminLogin').style.display='none';
+    document.getElementById('adminDash').style.display='block';
+    renderAdmin();
+    document.getElementById('loginError').textContent='';
+  } else {
+    document.getElementById('loginError').textContent='❌ Galat password! Dobara try karein.';
+    document.getElementById('adminPassInput').value='';
+  }
+}
+function doLogout(){
+  document.getElementById('adminLogin').style.display='block';
+  document.getElementById('adminDash').style.display='none';
+  document.getElementById('adminPassInput').value='';
+  document.getElementById('loginError').textContent='';
+  document.getElementById('pwdPanel').style.display='none';
+}
+function togglePwd(){
+  const p=document.getElementById('pwdPanel');
+  p.style.display=p.style.display==='none'?'block':'none';
+  document.getElementById('cpOld').value='';
+  document.getElementById('cpNew').value='';
+  document.getElementById('cpConfirm').value='';
+  document.getElementById('cpError').textContent='';
+  document.getElementById('cpSuccess').textContent='';
+}
+function changePassword(){
+  const old=document.getElementById('cpOld').value;
+  const nw=document.getElementById('cpNew').value;
+  const cf=document.getElementById('cpConfirm').value;
+  const err=document.getElementById('cpError');
+  const suc=document.getElementById('cpSuccess');
+  err.textContent=''; suc.textContent='';
+  if(!old||!nw||!cf){err.textContent='❌ Sabhi fields bharein!';return;}
+  if(old!==adminPassword){err.textContent='❌ Purana password galat hai!';return;}
+  if(nw.length<4){err.textContent='❌ Naya password kam se kam 4 characters ka hona chahiye!';return;}
+  if(nw!==cf){err.textContent='❌ Passwords match nahi kar rahe!';return;}
+  adminPassword=nw;
+  suc.textContent='✅ Password successfully change ho gaya!';
+  document.getElementById('cpOld').value='';
+  document.getElementById('cpNew').value='';
+  document.getElementById('cpConfirm').value='';
+  setTimeout(()=>{ document.getElementById('pwdPanel').style.display='none'; suc.textContent=''; },2000);
+}
+function renderAdmin(){
+  const total=medicines.length;
+  const inS=medicines.filter(m=>m.status==='in-stock').length;
+  const outS=total-inS;
+  document.getElementById('statsDiv').innerHTML=`
+    <div class="stat"><h3>${total}</h3><p>Total Medicines</p></div>
+    <div class="stat" style="border-top-color:#4caf50;"><h3 style="color:#4caf50;">${inS}</h3><p>In Stock</p></div>
+    <div class="stat" style="border-top-color:#c62828;"><h3 style="color:#c62828;">${outS}</h3><p>Out of Stock</p></div>
+    <div class="stat" style="border-top-color:#1565c0;"><h3 style="color:#1565c0;">8AM-10PM</h3><p>Timing</p></div>`;
+  document.getElementById('adminMedBody').innerHTML=medicines.map(m=>`
+    <tr>
+      <td><input style="width:145px;" value="${m.name}" id="en-${m.id}"></td>
+      <td><input style="width:105px;" value="${m.category}" id="ec-${m.id}"></td>
+      <td><input type="number" style="width:70px;" value="${m.price}" id="ep-${m.id}"></td>
+      <td><select id="es-${m.id}">
+        <option value="in-stock" ${m.status==='in-stock'?'selected':''}>✅ In Stock</option>
+        <option value="out-stock" ${m.status==='out-stock'?'selected':''}>❌ Out of Stock</option>
+      </select></td>
+      <td style="white-space:nowrap;">
+        <button class="btn btn-orange btn-sm" onclick="saveMed(${m.id})">💾 Save</button>
+        <button class="btn btn-red btn-sm" style="margin-left:5px;" onclick="delMed(${m.id})">🗑️ Delete</button>
+      </td>
+    </tr>`).join('');
+}
+function addMed(){
+  const n=document.getElementById('newName').value.trim();
+  const c=document.getElementById('newCat').value.trim();
+  const p=parseFloat(document.getElementById('newPrice').value);
+  const s=document.getElementById('newStatus').value;
+  if(!n||!c||!p){alert('Sabhi fields bharein!');return;}
+  medicines.push({id:nid++,name:n,category:c,price:p,status:s});
+  document.getElementById('newName').value='';
+  document.getElementById('newCat').value='';
+  document.getElementById('newPrice').value='';
+  renderAdmin();
+}
+function saveMed(id){
+  const m=medicines.find(x=>x.id===id);
+  m.name=document.getElementById('en-'+id).value;
+  m.category=document.getElementById('ec-'+id).value;
+  m.price=parseFloat(document.getElementById('ep-'+id).value);
+  m.status=document.getElementById('es-'+id).value;
+  renderAdmin();
+  alert('✅ Medicine update ho gayi!');
+}
+function delMed(id){
+  if(!confirm('Is medicine ko delete karna chahte hain?'))return;
+  medicines=medicines.filter(x=>x.id!==id);
+  renderAdmin();
+}
+
+renderPublic();
+</script>
+</body>
+</html>
